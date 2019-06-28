@@ -705,7 +705,7 @@ std::string LOOLWSD::LOKitVersion;
 std::string LOOLWSD::HostIdentifier;
 std::string LOOLWSD::ConfigFile = LOOLWSD_CONFIGDIR "/loolwsd.xml";
 std::string LOOLWSD::ConfigDir = LOOLWSD_CONFIGDIR "/conf.d";
-std::string LOOLWSD::LogLevel = "trace";
+std::string LOOLWSD::LogLevel = "error";
 bool LOOLWSD::AnonymizeFilenames = false;
 bool LOOLWSD::AnonymizeUsernames = false;
 Util::RuntimeConstant<bool> LOOLWSD::SSLEnabled;
@@ -802,7 +802,7 @@ void LOOLWSD::initialize(Application& self)
             { "logging.file.property[7]", "false" },
             { "logging.file.property[7][@name]", "archive" },
             { "logging.file[@enable]", "false" },
-            { "logging.level", "trace" },
+            { "logging.level", "error" },
             { "loleaflet_html", "loleaflet.html" },
             { "loleaflet_logging", "false" },
             { "net.listen", "any" },
@@ -883,7 +883,7 @@ void LOOLWSD::initialize(Application& self)
     UnitWSD::get().configure(config());
 
     // Set the log-level after complete initialization to force maximum details at startup.
-    LogLevel = getConfigValue<std::string>(conf, "logging.level", "trace");
+    LogLevel = getConfigValue<std::string>(conf, "logging.level", "error");
     setenv("LOOL_LOGLEVEL", LogLevel.c_str(), true);
     const bool withColor = getConfigValue<bool>(conf, "logging.color", true) && isatty(fileno(stderr));
     if (withColor)
@@ -923,7 +923,7 @@ void LOOLWSD::initialize(Application& self)
     }
 
     // Log at trace level until we complete the initialization.
-    Log::initialize("wsd", "trace", withColor, logToFile, logProperties);
+    Log::initialize("wsd", "error", withColor, logToFile, logProperties);
     if (LogLevel != "trace")
     {
         LOG_INF("Setting log-level to [trace] and delaying setting to configured [" << LogLevel << "] until after WSD initialization.");

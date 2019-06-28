@@ -383,8 +383,8 @@ int main(int argc, char** argv)
         logProperties["path"] = std::string(logFilename);
     }
 
-    Log::initialize("frk", "trace", logColor != nullptr, logToFile, logProperties);
-    LogLevel = logLevel ? logLevel : "trace";
+    Log::initialize("frk", "error", logColor != nullptr, logToFile, logProperties);
+    LogLevel = logLevel ? logLevel : "error";
     if (LogLevel != "trace")
     {
         LOG_INF("Setting log-level to [trace] and delaying setting to configured [" << LogLevel << "] until after Forkit initialization.");

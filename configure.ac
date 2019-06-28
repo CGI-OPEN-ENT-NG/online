@@ -217,7 +217,7 @@ anonym_msg=""
 if test "$enable_debug" = "yes"; then
    AC_DEFINE([ENABLE_DEBUG],1,[Whether to compile in some extra debugging support code and disable some security pieces])
    ENABLE_DEBUG=true
-   LOOLWSD_LOGLEVEL="trace"
+   LOOLWSD_LOGLEVEL="error"
    LOOLWSD_LOG_TO_FILE="true"
    LOOLWSD_LOGFILE="/tmp/loolwsd.log"
    LOOLWSD_ANONYMIZE_FILENAMES=false

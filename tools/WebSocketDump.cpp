@@ -237,7 +237,7 @@ int main (int argc, char **argv)
         throw std::runtime_error("Failed to load wsd unit test library.");
     }
 
-    Log::initialize("WebSocketDump", "trace", true, false,
+    Log::initialize("WebSocketDump", "error", true, false,
                     std::map<std::string, std::string>());
 
     LoolConfig config;

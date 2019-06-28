@@ -2465,9 +2465,9 @@ void lokit_main(
 
     Util::rng::reseed();
 
-    const std::string LogLevel = logLevel ? logLevel : "trace";
+    const std::string LogLevel = logLevel ? logLevel : "error";
     const bool bTraceStartup = (std::getenv("LOOL_TRACE_STARTUP") != nullptr);
-    Log::initialize("kit", bTraceStartup ? "trace" : logLevel, logColor != nullptr, logToFile, logProperties);
+    Log::initialize("kit", bTraceStartup ? "error" : logLevel, logColor != nullptr, logToFile, logProperties);
     if (bTraceStartup && LogLevel != "trace")
     {
         LOG_INF("Setting log-level to [trace] and delaying setting to configured [" << LogLevel << "] until after Kit initialization.");
